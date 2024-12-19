@@ -1,10 +1,11 @@
+import Body from "./components/Body";
+import "./index.css";
+
 function App() {
 
   return (
     <>
-      <div className="text-3xl text-red-600">
-        Thank you God for the help!! Do be on my side, please. And let me be on my side too!
-      </div>
+      <Body />
     </>
   )
 }
