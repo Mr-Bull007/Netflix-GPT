@@ -4,6 +4,12 @@
 - Create React App using vite
     - npm create vite@latest netflix-gpt -- --template react
 - Conifgured TailwindCSS
+- Header
+- Routing of App
+- Login Form
+- Sign up Form
+- Form Validation
+- useRef Hook
 
 # Features
 - Login/Sign up (Before Authentication)
