@@ -1,25 +1,47 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react"
+import { onAuthStateChanged } from "firebase/auth"
+import { addUser, removeUser } from "../utils/userSlice"
+import { LOGO_IMG } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+
   const handleSignOut = () => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      navigate("/");
-    }).catch((error) => {
+    signOut(auth)
+    .then(() => {})
+    .catch((error) => {
       // An error happened.
       console.log(error.message)
     });
-    
   }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const {uid, displayName, email} = user;
+          dispatch(addUser({uid: uid, email: email, displayName: displayName}));
+          navigate("/browse")
+        } else {
+          dispatch(removeUser());
+          navigate("/")
+        }
+      });
+
+      return () => unsubscribe();
+}, []);
   return (
       <div className="absolute px-28 py-3 bg-gradient-to-b from-black w-full z-10 flex justify-between">
-        <img className="w-48" src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo" />
-        {user && (<div className="py-3 px-5 m-4 bg-red-600 rounded-xl"><button className=" text-black font-bold w-20 h-5" onClick={handleSignOut}>Sign Out</button></div>)}
+        <img className="w-48" src={LOGO_IMG} alt="logo" />
+        {user && (
+          <div className="flex">
+          <div className="m-4 p-3 font-extrabold text-white"><h2>Hi {user.displayName}!</h2></div>
+          <div className="py-3 px-5 m-4 bg-red-600 rounded-xl"><button className=" text-black font-bold w-20 h-5" onClick={handleSignOut}>Sign Out</button></div></div>)}
       </div>
   )
 }
