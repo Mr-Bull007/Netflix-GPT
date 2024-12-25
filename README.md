@@ -30,7 +30,13 @@
 - Update Store with trailer video data
 - Embedded the YT video and make it autoplay
 - Added Tailwind CSS 
-- Build Secondary Component
+- Built Secondary Component
+- Build Movie List component
+- Build Movie Card component
+- TMDB Image CDN URL
+- Used TailwindCSS to make the browse page look good!
+- Did npm install -D tailwind-scrollbar-hide and added required configurations inside tailwind.config.js
+
 
 # Features
 - Login/Sign up (Before Authentication)

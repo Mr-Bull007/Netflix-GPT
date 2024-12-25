@@ -6,12 +6,12 @@ const VideoBackground = ({ movieId }) => {
 
     useTrailerVideo(movieId);
 
-    if(!trailer) return <div className=''>Loading...</div>
+    if(!trailer) return <div>Loading...</div>
   return (
-    <div className='w-full aspect-video'>
+    <div className='w-screen aspect-video inset-0'>
         <iframe 
-            className='w-full h-full'
-            src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&si=c9fz6nd3FUo0fbW-&amp;controls=0&amp;start=2`} 
+            className='w-full h-full '
+            src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&controls=0&rel=0&showinfo=0`} 
             title={trailer?.name} 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             referrerPolicy="strict-origin-when-cross-origin" 
