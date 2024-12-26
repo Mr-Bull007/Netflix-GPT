@@ -36,7 +36,9 @@
 - TMDB Image CDN URL
 - Used TailwindCSS to make the browse page look good!
 - Did npm install -D tailwind-scrollbar-hide and added required configurations inside tailwind.config.js
-
+- GPT Search Page
+- GPT Search Bar
+- Made the GPT Search Page multilingual
 
 # Features
 - Login/Sign up (Before Authentication)
