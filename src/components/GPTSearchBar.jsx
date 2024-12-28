@@ -29,14 +29,11 @@ const GPTSearchBar = () => {
         model: "gpt-4o-mini",
         messages: [{ role: "user", content: gptSearchQuery }],
       });
-      // completion.then((result) => console.log(result.choices[0].message));
-      console.log("gptResults: ", gptResults.choices?.[0]?.message?.content);
       const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
 
       const promiseArrays = gptMovies.map((movie) => searchMovieTMDB(movie));
       
       const tmdbResults = await Promise.all(promiseArrays);
-      console.log(tmdbResults);
 
       dispatch(addGPTMovieResult(tmdbResults));
     } catch (error) {
@@ -48,11 +45,11 @@ const GPTSearchBar = () => {
 
   return (
     <div className="flex justify-center">
-      <form className="flex mt-28" onSubmit={(e) => e.preventDefault()}>
+      <form className="flex md:mt-28 flex-col md:flex-row" onSubmit={(e) => e.preventDefault()}>
         <input
           ref={searchText}
           type="text"
-          className="py-3 px-4 w-80 my-5 mr-2 bg-black opacity-70 rounded-lg text-white border-white"
+          className="py-3 px-4 w-80 my-5 mr-2 mb-0 md:mb-5 mt-14 md:mt-5 bg-black opacity-70 rounded-lg text-white border-white"
           placeholder={lang[langChoice].GPTSearchPlaceholder}
         />
         <button

@@ -39,6 +39,14 @@
 - GPT Search Page
 - GPT Search Bar
 - Made the GPT Search Page multilingual
+- Get OpenAI Api Key
+- GPT Search API call
+- Fetched gptMoviesSuggestions from TMDB
+- Used Movie List component to make movie suggestion container
+- Memoization
+- Configured .env file
+- Made our webpage size responsive.
+
 
 # Features
 - Login/Sign up (Before Authentication)

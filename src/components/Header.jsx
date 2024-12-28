@@ -46,13 +46,10 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute px-28 py-3 bg-gradient-to-b from-black w-full z-10 flex justify-between">
-      <img className="w-48" src={LOGO_IMG} alt="logo" />
+    <div className="absolute px-28 py-3 bg-gradient-to-b from-black w-full z-10 flex flex-col md:flex-row justify-between">
+      <img className="w-48 mx-auto md:mx-0" src={LOGO_IMG} alt="logo" />
       {user && (
-        <div className="flex">
-          <div className="m-4 p-3 font-extrabold text-white">
-            <h2>Hi {user.displayName}!</h2>
-          </div>
+        <div className="flex justify-center">
           {gptClicked && (
             <div className="m-3 p-3 py-4">
               <select className="bg-gray-900 text-white" onChange={handleLangChange}>
@@ -76,7 +73,7 @@ const Header = () => {
             className="px-4 py-2 m-4 bg-violet-800 rounded-xl text-white hover:bg-violet-950"
             onClick={handleGPTSearch}
           >
-            {gptClicked ? "Back to Home" : "GPT Search"}
+            {gptClicked ? "Homepage" : "GPT Search"}
           </button>
         </div>
       )}
