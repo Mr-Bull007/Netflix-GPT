@@ -23,3 +23,21 @@ dist-ssr
 *.sln
 *.sw?
 .env
+notes
+
+# OS / system files
+Thumbs.db
+ehthumbs.db
+
+# Firebase emulators (if you ever use them)
+.firebase/
+
+# Vite cache
+.vite
+
+# dotenv backups or temp
+.env.local
+.env.*.local
+
+# Mac/Linux swap files
+*.swp
